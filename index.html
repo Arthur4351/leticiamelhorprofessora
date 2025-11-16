@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BARrigas | Luxo com Consciência</title>
+    <style>
+        /* ESTILO CHIQUE E CRIATIVO (COMPLETO) */
+        :root {
+            --cor-fundo: #0c0c0c;
+            --cor-principal: #1a1a1a;
+            --cor-secundaria: #d4af37; /* OURO PURO */
+            --cor-texto: #f0f0f0;
+            --cor-glow: #ffeb99; /* OURO CLARO PARA BRILHO INTENSO */
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            margin: 0;
+            background-color: var(--cor-fundo);
+            background-image: radial-gradient(circle at center, #1a1a1a 1%, var(--cor-fundo) 100%);
+            color: var(--cor-texto);
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+
+        header {
+            background-color: var(--cor-principal);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--cor-secundaria);
+        }
+
+        .logo {
+            font-family: 'Georgia', serif;
+            font-size: 2.2em;
+            color: var(--cor-secundaria);
+            letter-spacing: 8px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            font-weight: 900;
+        }
+
+        nav a {
+            color: var(--cor-texto);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 1em;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--cor-secundaria);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--cor-secundaria);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* SEÇÃO PRINCIPAL (HERO) */
+        .hero {
+            padding: 100px 5% 50px; 
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4.5em;
+            margin-bottom: 20px;
+            color: var(--cor-secundaria);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #ccc;
+        }
+
+        .cta-button {
+            background-color: var(--cor-secundaria);
+            color: var(--cor-fundo);
+            padding: 15px 40px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            transition: transform 0.2s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+        }
+
+        /* SELEÇÃO DE MESA */
+        #selecao-mesa {
+            margin-top: 40px;
+            display: none;
+        }
+
+        .mesa-opcoes {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+
+        .mesa-btn {
+            /* ESTILO DOS BOTÕES DE MESA MAIS CRIATIVO (3D METÁLICO) */
+            background-color: var(--cor-principal);
+            color: var(--cor-secundaria);
+            border: 3px solid var(--cor-secundaria);
+            padding: 15px 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.3em;
+            /* Múltiplas sombras para efeito 3D e metálico */
+            box-shadow: 
+                0 0 15px var(--cor-secundaria), /* Brilho externo */
+                inset 0 0 5px var(--cor-glow), /* Brilho interno mais claro */
+                inset 0 0 15px rgba(0, 0, 0, 0.8); /* Profundidade */
+            transition: background-color 0.2s, color 0.2s, transform 0.1s;
+        }
+
+        .mesa-btn:hover {
+            background-color: var(--cor-secundaria);
+            color: var(--cor-principal);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px var(--cor-glow), inset 0 0 10px rgba(0, 0, 0, 0.5); /* Efeito ao passar o mouse */
+        }
+        
+        /* MENSAGEM DE RESERVA */
+        #reserva-msg {
+            text-align: center;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #2b2b2b;
+            border-radius: 8px;
+            border: 1px solid var(--cor-secundaria);
+            display: none;
+            max-width: 700px;
+        }
+
+        #reserva-msg p {
+            font-size: 1.5em;
+            color: var(--cor-secundaria);
+            text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+            margin: 0;
+        }
+
+        /* CARDÁPIO COMPLETO (ESTILO) */
+        #cardapio-completo {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0 20px;
+            display: none;
+        }
+
+        .menu-section {
+            margin-bottom: 70px;
+            padding-left: 20px;
+            border-left: 5px solid var(--cor-secundaria);
+        }
+
+        .menu-section h2 {
+            font-family: 'Georgia', serif;
+            font-size: 2.8em;
+            color: var(--cor-secundaria);
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .menu-item-full {
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #444;
+        }
+
+        .menu-item-full h3 {
+            font-size: 1.5em;
+            color: var(--cor-texto);
+            margin: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .menu-item-full h3 span {
+            /* ESTILO DO PREÇO MAIS CRIATIVO (SUPER GLOW) */
+            color: var(--cor-glow); /* Cor mais clara para o brilho */
+            font-weight: 900;
+            font-size: 1.25em; /* Aumentado */
+            font-style: italic; /* Mais elegante */
+            letter-spacing: 2px; /* Espaçamento entre números */
+            /* Brilho Dourado INTENSO */
+            text-shadow: 0 0 5px var(--cor-secundaria), 0 0 15px var(--cor-glow); 
+        }
+
+        .menu-item-full p {
+            font-size: 1em;
+            color: #b0b0b0;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        
+        /* ESTILO DA ÁREA DE EVENTOS */
+        #eventos-area {
+            max-width: 900px;
+            margin: 80px auto;
+            padding: 40px 20px;
+            border: 3px solid var(--cor-secundaria);
+            background-color: #151515;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+        }
+
+        #eventos-area h2 {
+            font-size: 4em;
+            color: var(--cor-secundaria);
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            letter-spacing: 5px;
+            border-bottom: 2px solid var(--cor-secundaria);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .evento-item {
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #444;
+            border-radius: 5px;
+        }
+
+        .evento-item h3 {
+            font-size: 3em;
+            color: #fff;
+            margin: 0;
+            text-shadow: 0 0 8px #d4af37;
+        }
+
+        .evento-item p {
+            font-size: 1.8em;
+            color: #ccc;
+            margin-top: 10px;
+        }
+
+        /* FOOTER (CONTATO) */
+        footer {
+            background-color: var(--cor-principal);
+            color: var(--cor-texto);
+            text-align: center;
+            padding: 30px 5%;
+            border-top: 3px solid var(--cor-secundaria);
+            font-size: 1.1em;
+        }
+
+        footer p {
+            margin: 8px 0;
+        }
+
+        footer a {
+            color: var(--cor-secundaria);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">B A R r i g a s</div>
+        <nav>
+            <a href="#">Início</a>
+            <a href="#cardapio-completo" onclick="mostrarCardapioManual()">Menu Completo</a>
+            <a href="#eventos-area">Eventos</a>
+            <a href="#contato-info">Contato</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>B A R R I G A S</h1>
+        <h1>Elegância em Cada Gole</h1>
+        <p>A mais prestigiada coquetelaria da cidade. Reserve sua experiência e descubra o luxo com compromisso sustentável.</p>
+        
+        <button id="iniciar-reserva-btn" class="cta-button" onclick="mostrarSelecaoMesa()">Ver Menu e Reservar</button>
+        
+        <div id="selecao-mesa">
+            <p style="font-size: 1.2em; color: var(--cor-secundaria);">Selecione sua mesa (1 a 10) para ver o cardápio exclusivo:</p>
+            <div class="mesa-opcoes" id="opcoes-mesa">
+                </div>
+        </div>
+        
+        <section id="reserva-msg">
+            </section>
+    </section>
+
+    <section id="eventos-area">
+        <h2>Eventos Exclusivos</h2>
+        <div class="evento-item">
+            <h3>SHOW DE BIELZINHO BRITO</h3>
+            <p>Dia 30 de fevereiro de 2026</p>
+            <p>Abertura de portas: 20h00. Reserve sua mesa agora!</p>
+        </div>
+        </section>
+
+    <section id="cardapio-completo">
+        <h1>Cardápio Exclusivo BARrigas</h1>
+        
+        <div class="menu-section">
+            <h2>🍸 Coquetelaria Premium e Assinaturas (19 Drinks)</h2>
+            <div class="menu-item-full">
+                <h3>O Drink do Pomar (Sustentável) <span>R$ 48</span></h3>
+                <p>Nossa criação zero desperdício: Gin Premium com frutas da estação. Cítrico, elegante e sustentável.</p>
+            </div>
+            <div class="menu-item-full">
+                <h3>O Toque Suave (Floral) <span>R$ 55</span></h3>
+                <p>Gin ou Vodka com infusão de flores regionais. Aromático e fresco, sem canudos plásticos.</p>
+            </div>
+            <div class="menu-item-full">
+                <h3>O Sabor do Latão <span>R$ 59</span></h3>
+                <p>Whisky com notas de especiarias e fumaça, servido em taça de cobre. Forte e marcante.</p>
+            </div>
+            <div class="menu-item-full"><h3>Jardim Secreto <span>R$ 52</span></h3><p>Gin com infusão de hibisco e toque de grapefruit. Leve e exótico.</p></div>
+            <div class="menu-item-full"><h3>Névoa Matinal <span>R$ 49</span></h3><p>Vodka, licor de pêssego e espuma de lavanda.</p></div>
+            <div class="menu-item-full"><h3>Ouro Negro <span>R$ 65</span></h3><p>Rum envelhecido, café frio e especiarias doces.</p></div>
+            <div class="menu-item-full"><h3>Esmeralda Perdida <span>R$ 58</span></h3><p>Tequila prata, pepino e pimenta dedo-de-moça. Refrescante e ousado.</p></div>
+            <div class="menu-item-full"><h3>Céu de Cobre <span>R$ 50</span></h3><p>Bourbon, xarope de bordo e bitter de laranja. Forte e aveludado.</p></div>
+            <div class="menu-item-full"><h3>Brilho da Meia-Noite <span>R$ 54</span></h3><p>Champagne, licor de flor de sabugueiro e framboesa fresca.</p></div>
+            <div class="menu-item-full"><h3>Elixir Proibido <span>R$ 60</span></h3><p>Absinto, hortelã e limão siciliano.</p></div>
+            <div class="menu-item-full"><h3>Vento Frio <span>R$ 51</span></h3><p>Aperol, Prosecco e suco de melancia. Perfeito para o verão.</p></div>
+            <div class="menu-item-full"><h3>Tropicália Luxo <span>R$ 53</span></h3><p>Cachaça premium, maracujá e gengibre fresco.</p></div>
+            <div class="menu-item-full"><h3>Beijo Carmim <span>R$ 56</span></h3><p>Gin, morango macerado e pimenta rosa.</p></div>
+            <div class="menu-item-full"><h3>Caminho das Pedras <span>R$ 68</span></h3><p>Whisky defumado, mel e chá preto. Servido quente.</p></div>
+            <div class="menu-item-full"><h3>Serenata Azul <span>R$ 57</span></h3><p>Vodka, curaçao blue e suco de abacaxi.</p></div>
+            <div class="menu-item-full"><h3>Alma de Vidro <span>R$ 47</span></h3><p>Limoncello, hortelã e água com gás.</p></div>
+            <div class="menu-item-full"><h3>Tempestade Doce <span>R$ 59</span></h3><p>Rum, coco, e especiarias da ilha.</p></div>
+            <div class="menu-item-full"><h3>Fogo Silencioso <span>R$ 63</span></h3><p>Tequila, pimenta jalapeño e manga.</p></div>
+            <div class="menu-item-full"><h3>Aurora Boreal <span>R$ 55</span></h3><p>Gin, água tônica e toque de alecrim.</p></div>
+        </div>
+        
+        <div class="menu-section">
+            <h2>🍔 Comidas de Bar (Refeições Leves) (13 Itens)</h2>
+            <div class="menu-item-full">
+                <h3>Mini-Burgers Gourmet (Trio) <span>R$ 35</span></h3>
+                <p>Três pequenos burgers *premium* com molho de alho negro. Ideal para degustação individual.</p>
+            </div>
+            <div class="menu-item-full">
+                <h3>Tacos de Camarão Crocante <span>R$ 45</span></h3>
+                <p>Tortillas macias com camarões empanados e maionese picante de pimenta biquinho.</p>
+            </div>
+            <div class="menu-item-full">
+                <h3>Tartare de Salmão Defumado <span>R$ 68</span></h3>
+                <p>Salmão fresco e defumado, temperado com alcaparras e limão, servido com torradas *brioche*.</p>
+            </div>
+            <div class="menu-item-full"><h3>Burger Clássico BARrigas <span>R$ 42</span></h3><p>Blend de carnes nobres, queijo cheddar envelhecido e bacon artesanal.</p></div>
+            <div class="menu-item-full"><h3>Vegan Luxo (Sanduíche) <span>R$ 38</span></h3><p>Hambúrguer de cogumelos selvagens com pesto e rúcula no pão de beterraba.</p></div>
+            <div class="menu-item-full"><h3>Slider de Pato Confit <span>R$ 55</span></p>Pequeno pão com carne de pato desfiada e geleia de pimenta.</p></div>
+            <div class="menu-item-full"><h3>Sanduíche de Lagosta <span>R$ 89</span></h3><p>Lagosta fresca temperada com manteiga de alho em pão de batata.</p></div>
+            <div class="menu-item-full"><h3>Burger do Sommelier <span>R$ 49</span></h3><p>Carne Wagyu, queijo Brie e cebola caramelizada no vinho tinto.</p></div>
+            <div class="menu-item-full"><h3>Fritatta de Trufas <span>R$ 60</span></h3><p>Omelete aberta com ovos caipiras, queijo de cabra e azeite trufado.</p></div>
+            <div class="menu-item-full"><h3>Pão na Chapa Premium <span>R$ 29</span></h3><p>Pão *sourdough* na chapa com manteiga de garrafa e flor de sal.</p></div>
+            <div class="menu-item-full"><h3>Ceviche de Peixe Branco <span>R$ 52</span></h3><p>Peixe fresco marinado em limão, coentro e milho crocante.</p></div>
+            <div class="menu-item-full"><h3>Pizza de Presunto Cru e Figo <span>R$ 65</span></h3><p>Massa fina, queijo gorgonzola, presunto de parma e figos frescos.</p></div>
+            <div class="menu-item-full"><h3>Quesadilla de Frango Defumado <span>R$ 40</span></h3><p>Tortilla com recheio cremoso de frango defumado e pimenta suave.</p></div>
+        </div>
+
+        <div class="menu-section">
+            <h2>🥃 Drinks Alcoólicos Clássicos (3 Itens)</h2>
+             <div class="menu-item-full">
+                <h3>Negroni de Mármore <span>R$ 52</span></h3>
+                <p>A versão sofisticada do clássico (Gin, Vermute e Campari), forte e amargo.</p>
+            </div>
+             <div class="menu-item-full">
+                <h3>O Forte da Casa (Whisky Old Fashioned) <span>R$ 62</span></h3>
+                <p>Whisky envelhecido com tempero exclusivo BARrigas e gelo lapidado.</p>
+            </div>
+             <div class="menu-item-full">
+                <h3>Martini Seco (Premium) <span>R$ 58</span></h3>
+                <p>Gin Ultra-Premium, toque de Vermute e azeitona recheada. O epítome da elegância.</p>
+            </div>
+        </div>
+        
+        <div class="menu-section">
+            <h2>🧀 Lanches e Petiscos (10 Itens)</h2>
+            <div class="menu-item-full">
+                <h3>Tábua de Degustação Local <span>R$ 75</span></h3>
+                <p>Seleção de queijos e salames artesanais da região. Ideal para dividir.</p>
+            </div>
+            <div class="menu-item-full">
+                <h3>Amêndoas e Castanhas Marinadas <span>R$ 28</span></h3>
+                <p>Mix de nuts torradas, temperadas com azeite de alecrim e flor de sal.</p>
+            </div>
+            <div class="menu-item-full">
+                <h3>Croquetas de Jamón Ibérico <span>R$ 40</span></h3>
+                <p>Pequenos bolinhos cremosos de presunto ibérico, servidos com molho suave.</p>
+            </div>
+            <div class="menu-item-full"><h3>Batatas Rústicas com Trufa <span>R$ 32</span></h3><p>Batatas fritas com azeite de trufas e parmesão ralado.</p></div>
+            <div class="menu-item-full"><h3>Mini-Coxinhas de Siri <span>R$ 48</span></h3><p>Coxinhas gourmet recheadas com carne de siri e especiarias.</p></div>
+            <div class="menu-item-full"><h3>Ostras Frescas (6 unidades) <span>R$ 90</span></h3><p>Ostras de cultivo local, servidas com limão e mignonette.</p></div>
+            <div class="menu-item-full"><h3>Bruschettas de Tomate Seco <span>R$ 35</span></h3><p>Pão italiano tostado com tomates secos, manjericão e queijo *mozzarella*.</p></div>
+            <div class="menu-item-full"><h3>Bolinhos de Bacalhau <span>R$ 44</span></h3><p>Bolinhos tradicionais, crocantes por fora e cremosos por dentro.</p></div>
+            <div class="menu-item-full"><h3>Azeitonas Marinadas no Alecrim <span>R$ 25</span></h3><p>Mix de azeitonas temperadas com azeite extra virgem e alecrim.</p></div>
+            <div class="menu-item-full"><h3>Chips de Batata Doce <span>R$ 22</span></h3><p>Fatias finas de batata doce crocante, servidas com maionese defumada.</p></div>
+        </div>
+
+        <div class="menu-section">
+            <h2>🥂 Champanhes, Vinhos e Drinks Leves (3 Itens)</h2>
+             <div class="menu-item-full">
+                <h3>Taça de Champagne Brut (Francês) <span>R$ 95</span></h3>
+                <p>O melhor Champagne para celebrações, servido na temperatura ideal.</p>
+            </div>
+             <div class="menu-item-full">
+                <h3>Vinho Tinto (Taça) <span>R$ 38</span></h3>
+                <p>Seleção especial do Sommelier. Pergunte ao nosso atendente sobre a safra do dia.</p>
+            </div>
+            <div class="menu-item-full">
+                <h3>O Refresco Chique (Sem Álcool) <span>R$ 25</span></h3>
+                <p>Mix de sucos naturais e especiarias. Saudável e elegante.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <footer id="contato-info">
+        <p>📞 Reservas e Informações: **(73) 99931-0836**</p>
+        <p>📧 Email Exclusivo: <a href="mailto:pauloarthurbtavares@gmail.com">**pauloarthurbtavares@gmail.com**</a></p>
+        <p style="margin-top: 15px;">© 2025 BARrigas. Luxo, Sabor e Responsabilidade.</p>
+        <p>Rua meueuspraquetalendoissoessaempresanemexiste, 78 | Aberto das 19h às 02h.</p>
+    </footer>
+
+    <script>
+        // Função para mostrar a área de seleção de mesa
+        function mostrarSelecaoMesa() {
+            document.getElementById('selecao-mesa').style.display = 'block';
+            document.getElementById('iniciar-reserva-btn').style.display = 'none';
+        }
+
+        // Função para mostrar o cardápio (link do menu)
+        function mostrarCardapioManual() {
+            const cardapio = document.getElementById('cardapio-completo');
+            document.getElementById('reserva-msg').style.display = 'none';
+            cardapio.style.display = 'block';
+            cardapio.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Função principal para confirmar a reserva e mostrar o cardápio (na mesma página)
+        function confirmarReserva(mesa) {
+            const cardapio = document.getElementById('cardapio-completo');
+            const msg = document.getElementById('reserva-msg');
+            const selecaoMesa = document.getElementById('selecao-mesa');
+
+            // 1. Esconde a seleção de mesa e mostra o botão inicial novamente
+            selecaoMesa.style.display = 'none';
+            document.getElementById('iniciar-reserva-btn').style.display = 'block';
+            
+            // 2. Mostra a mensagem de sucesso
+            msg.style.display = 'block';
+            msg.innerHTML = `<p>✅ Bem-vindo! Sua mesa ${mesa} está pronta. Veja nosso cardápio exclusivo abaixo.</p>`;
+            
+            // 3. Mostra o cardápio
+            cardapio.style.display = 'block';
+            
+            // 4. Rola para a mensagem de confirmação
+            msg.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Gera os botões de 1 a 10 ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            const opcoesMesa = document.getElementById('opcoes-mesa');
+            for (let i = 1; i <= 10; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'mesa-btn';
+                btn.textContent = i;
+                btn.onclick = () => confirmarReserva(i);
+                opcoesMesa.appendChild(btn);
+            }
+        });
+    </script>
+
+</body>
+</html>

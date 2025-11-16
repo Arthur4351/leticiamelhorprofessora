@@ -34,11 +34,26 @@
             border-bottom: 3px solid var(--cor-secundaria);
         }
 
-        .logo-img { /* ESTILO PARA A IMAGEM DA LOGO */
-            height: 80px; /* Ajuste o tamanho conforme necessário */
+        /* CONTAINER PARA ALINHAR TEXTO E LOGO */
+        .logo-container { 
+            display: flex;
+            align-items: center; /* Alinha verticalmente a logo com o texto */
+        }
+
+        .logo { /* ESTILO DO TEXTO "B A R R I G A S" */
+            font-family: 'Georgia', serif;
+            font-size: 2.2em;
+            color: var(--cor-secundaria);
+            letter-spacing: 8px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            font-weight: 900;
+        }
+
+        .logo-img { /* ESTILO PARA A IMAGEM DO HOMER */
+            height: 60px; /* Tamanho ajustado para caber ao lado do texto */
             width: auto;
-            margin-right: 15px; /* Espaçamento entre a logo e a navegação */
-            filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.7)); /* Um brilho suave */
+            margin-left: 10px; /* Espaço entre o texto e a imagem */
+            filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.7)); 
         }
 
         nav a {
@@ -283,7 +298,10 @@
 <body>
 
     <header>
-        <img src="https://i.ibb.co/L5w2R7M/homer-barrigas-logo.png" alt="Logo BARrigas - Homer Simpson" class="logo-img">
+        <div class="logo-container">
+            <div class="logo">B A R r i g a s</div>
+            <img src="unnamed.jpg" alt="Logo Homer Simpson" class="logo-img">
+        </div>
         <nav>
             <a href="#">Início</a>
             <a href="#cardapio-completo" onclick="mostrarCardapioManual()">Menu Completo</a>

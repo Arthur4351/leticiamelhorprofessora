@@ -34,13 +34,11 @@
             border-bottom: 3px solid var(--cor-secundaria);
         }
 
-        .logo {
-            font-family: 'Georgia', serif;
-            font-size: 2.2em;
-            color: var(--cor-secundaria);
-            letter-spacing: 8px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-            font-weight: 900;
+        .logo-img { /* ESTILO PARA A IMAGEM DA LOGO */
+            height: 80px; /* Ajuste o tamanho conforme necessário */
+            width: auto;
+            margin-right: 15px; /* Espaçamento entre a logo e a navegação */
+            filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.7)); /* Um brilho suave */
         }
 
         nav a {
@@ -126,7 +124,6 @@
         }
 
         .mesa-btn {
-            /* ESTILO DOS BOTÕES DE MESA MAIS CRIATIVO (3D METÁLICO) */
             background-color: var(--cor-principal);
             color: var(--cor-secundaria);
             border: 3px solid var(--cor-secundaria);
@@ -135,11 +132,10 @@
             cursor: pointer;
             font-weight: bold;
             font-size: 1.3em;
-            /* Múltiplas sombras para efeito 3D e metálico */
             box-shadow: 
-                0 0 15px var(--cor-secundaria), /* Brilho externo */
-                inset 0 0 5px var(--cor-glow), /* Brilho interno mais claro */
-                inset 0 0 15px rgba(0, 0, 0, 0.8); /* Profundidade */
+                0 0 15px var(--cor-secundaria), 
+                inset 0 0 5px var(--cor-glow), 
+                inset 0 0 15px rgba(0, 0, 0, 0.8);
             transition: background-color 0.2s, color 0.2s, transform 0.1s;
         }
 
@@ -147,7 +143,7 @@
             background-color: var(--cor-secundaria);
             color: var(--cor-principal);
             transform: scale(1.05);
-            box-shadow: 0 0 20px var(--cor-glow), inset 0 0 10px rgba(0, 0, 0, 0.5); /* Efeito ao passar o mouse */
+            box-shadow: 0 0 20px var(--cor-glow), inset 0 0 10px rgba(0, 0, 0, 0.5);
         }
         
         /* MENSAGEM DE RESERVA */
@@ -207,13 +203,11 @@
         }
 
         .menu-item-full h3 span {
-            /* ESTILO DO PREÇO MAIS CRIATIVO (SUPER GLOW) */
-            color: var(--cor-glow); /* Cor mais clara para o brilho */
+            color: var(--cor-glow);
             font-weight: 900;
-            font-size: 1.25em; /* Aumentado */
-            font-style: italic; /* Mais elegante */
-            letter-spacing: 2px; /* Espaçamento entre números */
-            /* Brilho Dourado INTENSO */
+            font-size: 1.25em;
+            font-style: italic;
+            letter-spacing: 2px;
             text-shadow: 0 0 5px var(--cor-secundaria), 0 0 15px var(--cor-glow); 
         }
 
@@ -289,7 +283,7 @@
 <body>
 
     <header>
-        <div class="logo">B A R r i g a s</div>
+        <img src="https://i.ibb.co/L5w2R7M/homer-barrigas-logo.png" alt="Logo BARrigas - Homer Simpson" class="logo-img">
         <nav>
             <a href="#">Início</a>
             <a href="#cardapio-completo" onclick="mostrarCardapioManual()">Menu Completo</a>

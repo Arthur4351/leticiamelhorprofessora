@@ -29,8 +29,8 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             padding: 15px 5%;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column; /* Alinha os itens em coluna para centralizar a logo acima da nav */
+            align-items: center; /* Centraliza horizontalmente o conteúdo do header */
             border-bottom: 3px solid var(--cor-secundaria);
         }
 
@@ -38,31 +38,37 @@
         .logo-container { 
             display: flex;
             align-items: center; /* Alinha verticalmente a logo com o texto */
+            margin-bottom: 10px; /* Espaço entre a logo e a navegação */
         }
 
         .logo { /* ESTILO DO TEXTO "B A R R I G A S" */
             font-family: 'Georgia', serif;
-            font-size: 2.2em;
+            font-size: 2.8em; /* Aumentado para maior */
             color: var(--cor-secundaria);
-            letter-spacing: 8px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            letter-spacing: 10px; /* Espaçamento da letra maior */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8), 0 0 10px rgba(212, 175, 55, 0.5); /* Brilho maior */
             font-weight: 900;
         }
 
-        .logo-img { /* ESTILO PARA A IMAGEM DO HOMER */
-            height: 60px; /* Tamanho ajustado para caber ao lado do texto */
+        .logo-img { /* ESTILO PARA A IMAGEM DO HOMER - AGORA MAIOR */
+            height: 120px; /* **AUMENTADO A ALTURA DA IMAGEM AQUI** */
             width: auto;
-            margin-left: 10px; /* Espaço entre o texto e a imagem */
-            filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.7)); 
+            margin-left: 15px; /* Espaço entre o texto e a imagem */
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.9)); 
+        }
+
+        nav {
+            margin-top: 10px; /* Espaço entre a logo e a navegação */
         }
 
         nav a {
             color: var(--cor-texto);
             text-decoration: none;
-            margin-left: 30px;
-            font-size: 1em;
+            margin: 0 20px; /* Ajustado para centralizar e ter mais espaço entre os links */
+            font-size: 1.1em; /* Tamanho do texto da navegação ligeiramente maior */
             letter-spacing: 1px;
             position: relative;
+            padding: 5px 0; /* Padding para a linha do hover */
         }
 
         nav a:hover {
@@ -73,9 +79,10 @@
             content: '';
             position: absolute;
             width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
+            height: 3px; /* Linha de hover mais grossa */
+            bottom: 0;
+            left: 50%; /* Inicia no centro */
+            transform: translateX(-50%); /* Centraliza a linha */
             background-color: var(--cor-secundaria);
             transition: width 0.3s;
         }
@@ -300,7 +307,7 @@
     <header>
         <div class="logo-container">
             <div class="logo">B A R r i g a s</div>
-            <img src="unnamed.jpg" alt="Logo Homer Simpson" class="logo-img">
+            <img src="home.jpg" alt="Logo Homer Simpson" class="logo-img">
         </div>
         <nav>
             <a href="#">Início</a>
@@ -490,7 +497,7 @@
             msg.style.display = 'block';
             msg.innerHTML = `<p>✅ Bem-vindo! Sua mesa ${mesa} está pronta. Veja nosso cardápio exclusivo abaixo.</p>`;
             
-            // 3. Mostra o cardápio
+            // 3. Mostra o cardapio
             cardapio.style.display = 'block';
             
             // 4. Rola para a mensagem de confirmação
